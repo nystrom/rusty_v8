@@ -91,7 +91,7 @@ impl WasmModuleObject {
   /// a CompiledWasmModule.
   #[inline(always)]
   pub fn from_compiled_module<'s>(
-    scope: &mut HandleScope<'s>,
+    scope: &mut HandleScope<'s, ()>,
     compiled_module: &CompiledWasmModule,
   ) -> Option<Local<'s, WasmModuleObject>> {
     unsafe {
@@ -115,7 +115,7 @@ impl WasmModuleObject {
   /// Compile a Wasm module from the provided uncompiled bytes.
   #[inline(always)]
   pub fn compile<'s>(
-    scope: &mut HandleScope<'s>,
+    scope: &mut HandleScope<'s, ()>,
     wire_bytes: &[u8],
   ) -> Option<Local<'s, WasmModuleObject>> {
     unsafe {
